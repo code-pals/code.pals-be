@@ -59,13 +59,30 @@ describe('backend routes', () => {
       code: 'See below',
       question: 'Any ideas?',
     });
+    const res = await request(app).patch(`/api/v1/posts/${post.post_id}`).send({
+      posted_by: 1,
+      title: 'What is this error',
+      code: 'See below',
+      question: 'Any ideas?',
+    });
     const updatedPost = {
-      posted_by: 2,
-      title: 'What is this error???',
+      post_id: expect.any(String),
+      posted_by: expect.any(String),
+      title: 'What is this error',
       code: 'See below',
       question: 'Any ideas?',
     };
-    const res = await request(app).patch(`/api/v1/posts/${post.post_id}`);
-    expect(res.body).toEqual(updatedPost);
+    expect(res.body).toEqual({ ...updatedPost, created: expect.any(String) });
+  });
+
+  it('should delete a post', async () => {
+    const post = await Post.insert({
+      posted_by: 1,
+      title: 'What is this error???',
+      code: 'See below',
+      question: 'Any ideas?',
+    });
+    const res = await request(app).delete(`/api/v1/posts/${post.post_id}`);
+    expect(res.body).toEqual({ ...post, created: expect.any(String) });
   });
 });
