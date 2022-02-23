@@ -36,13 +36,14 @@ CREATE TABLE comments (
     post_id BIGINT NOT NULL,
     comment TEXT,
     parent BIGINT,
+    favorited BOOLEAN,
     created TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (commenter) REFERENCES users(user_id),
     FOREIGN KEY (parent) REFERENCES comments(comment_id)
 );
 
-INSERT INTO comments (commenter, post_id, comment, parent)
-VALUES (1, 1, 'The JS array prototype constructor is used to allow new methods to the Array object', 1);
+INSERT INTO comments (commenter, post_id, comment, parent, favorited)
+VALUES (1, 1, 'The JS array prototype constructor is used to allow new methods to the Array object', null, false);
 
 
 
@@ -52,7 +53,7 @@ CREATE TABLE boards (
     title TEXT,
     summary TEXT,
     goal TEXT,
-    group_size BIGINT,
+    group_size INT,
     created TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (created_by) REFERENCES users(user_id)
 );
