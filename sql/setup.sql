@@ -27,8 +27,8 @@ CREATE TABLE posts (
     (user_id)
 );
 
-INSERT INTO posts (posted_by, title, code, question)
-VALUES (1, 'Help me', 'array.prototype', 'What is a prototype of an Array?');
+-- INSERT INTO posts (posted_by, title, code, question)
+-- VALUES (1, 'Help me', 'array.prototype', 'What is a prototype of an Array?');
 
 CREATE TABLE comments (
     comment_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
