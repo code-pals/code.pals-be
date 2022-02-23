@@ -2,7 +2,9 @@ const pool = require('../lib/utils/pool');
 const setup = require('../data/setup');
 const request = require('supertest');
 const app = require('../lib/app');
-const Comment = require('../lib/models/Comment');
+const Comment = require('../lib/models/Comment')
+;
+const Post = require('../lib/models/Post');
 
 describe('backend routes', () => {
   beforeEach(() => {
@@ -26,12 +28,16 @@ describe('backend routes', () => {
 
     expect(res.body).toEqual({
       commentId: expect.any(String),   
-      commenter: 1,
-      postId: 1,
+      commenter: expect.any(String),
+      postId: expect.any(String),
       comment: 'great question',
       parent: null,
       favorited: false,
       created: expect.any(String)
     });
   });
+
+  it('should get comments by post', async () {
+      
+  })
 });
