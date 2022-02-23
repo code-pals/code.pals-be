@@ -58,7 +58,7 @@ CREATE TABLE boards (
     FOREIGN KEY (created_by) REFERENCES users(user_id)
 );
 
-INSERT INTO boards (created_by, title, summary, goal, group_size)
-VALUES (1, 'miro makeover', 'create a better miro board', 'full stack app', 4);
+-- INSERT INTO boards (created_by, title, summary, goal, group_size)
+-- VALUES (1, 'miro makeover', 'create a better miro board', 'full stack app', 4);
 
 
