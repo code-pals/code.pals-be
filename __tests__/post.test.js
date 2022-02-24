@@ -15,14 +15,14 @@ describe('backend routes', () => {
 
   it('should be able to create a post', async () => {
     const res = await request(app).post('/api/v1/posts').send({
-      posted_by: 1,
+      postedBy: 1,
       title: 'What is this error???',
       code: 'See below',
       question: 'Any ideas?',
     });
     expect(res.body).toEqual({
-      post_id: expect.any(String),
-      posted_by: expect.any(String),
+      postedId: expect.any(String),
+      postedBy: expect.any(String),
       title: 'What is this error???',
       code: 'See below',
       question: 'Any ideas?',
@@ -32,7 +32,7 @@ describe('backend routes', () => {
 
   it('should get all post', async () => {
     const post = await Post.insert({
-      posted_by: 1,
+      postedBy: 1,
       title: 'What is this error???',
       code: 'See below',
       question: 'Any ideas?',
@@ -43,31 +43,33 @@ describe('backend routes', () => {
 
   it('should get a post', async () => {
     const post = await Post.insert({
-      posted_by: 1,
+      postedBy: 1,
       title: 'What is this error???',
       code: 'See below',
       question: 'Any ideas?',
     });
-    const res = await request(app).get(`/api/v1/posts/${post.post_id}`);
+    const res = await request(app).get(`/api/v1/posts/${post.postedId}`);
     expect(res.body).toEqual({ ...post, created: expect.any(String) });
   });
 
   it('should update a post', async () => {
     const post = await Post.insert({
-      posted_by: 1,
+      postedBy: 1,
       title: 'What is this error???',
       code: 'See below',
       question: 'Any ideas?',
     });
-    const res = await request(app).patch(`/api/v1/posts/${post.post_id}`).send({
-      posted_by: 1,
-      title: 'What is this error',
-      code: 'See below',
-      question: 'Any ideas?',
-    });
+    const res = await request(app)
+      .patch(`/api/v1/posts/${post.postedId}`)
+      .send({
+        postedBy: 1,
+        title: 'What is this error',
+        code: 'See below',
+        question: 'Any ideas?',
+      });
     const updatedPost = {
-      post_id: expect.any(String),
-      posted_by: expect.any(String),
+      postedId: expect.any(String),
+      postedBy: expect.any(String),
       title: 'What is this error',
       code: 'See below',
       question: 'Any ideas?',
@@ -77,12 +79,12 @@ describe('backend routes', () => {
 
   it('should delete a post', async () => {
     const post = await Post.insert({
-      posted_by: 1,
+      postedBy: 1,
       title: 'What is this error???',
       code: 'See below',
       question: 'Any ideas?',
     });
-    const res = await request(app).delete(`/api/v1/posts/${post.post_id}`);
+    const res = await request(app).delete(`/api/v1/posts/${post.postedId}`);
     expect(res.body).toEqual({ ...post, created: expect.any(String) });
   });
 });
