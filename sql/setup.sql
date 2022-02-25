@@ -8,7 +8,7 @@ CREATE TABLE users (
     email TEXT,
     username TEXT, 
     pronoun TEXT, 
-    experience BIGINT,
+    experience TEXT,
     tech TEXT, 
     avatar TEXT,
     repos BIGINT,
