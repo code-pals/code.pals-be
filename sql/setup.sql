@@ -6,6 +6,10 @@ CREATE TABLE users (
     user_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     github TEXT NOT NULL,
     email TEXT,
+    username TEXT, 
+    pronoun TEXT, 
+    experience BIGINT,
+    tech TEXT, 
     avatar TEXT,
     repos BIGINT,
     bio TEXT,
@@ -14,7 +18,7 @@ CREATE TABLE users (
 );
 
 INSERT INTO users (github, email, avatar, repos, bio, member_since)
-VALUES ('AmitSheth9', 'amit.sheth9@gmail.com', 'https://avatars.githubusercontent.com/u/79884362?v=4', 75, 'bio', '2021-03-02T01:35:50Z');
+VALUES ('fakename', 'fakememail@gmail.com', 'https://avatars.githubusercontent.com/u/79884362?v=4', 75, 'bio', '2021-03-02T01:35:50Z');
 
 CREATE TABLE posts (
     post_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
