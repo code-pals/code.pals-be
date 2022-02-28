@@ -1,6 +1,7 @@
 # packages installed:
 
-npm i jsonwebtoken
-npm i cors
-npm i cookie-parser
-npm i cross-fetch
+npm i jsonwebtoken </br>
+npm i cors </br>
+npm i cookie-parser </br>
+npm i cross-fetch </br>
+npm install socket.io
