@@ -1,8 +1,20 @@
 const app = require('./lib/app');
 const pool = require('./lib/utils/pool');
-
-const socket = require('socket.io');
 const color = require('colors');
+
+const API_URL = process.env.API_URL || 'http://localhost';
+const PORT = process.env.PORT || 7890;
+
+const server = require('http').createServer(app);
+server.listen(PORT, () => {
+  console.log('Start on port test');
+});
+
+const io = require('socket.io')(server, {
+  cors: {
+    origin: '*',
+  },
+});
 
 const {
   joinUser,
@@ -10,20 +22,15 @@ const {
   deleteUser,
 } = require('./lib/chatroom/dummyData');
 
-const API_URL = process.env.API_URL || 'http://localhost';
-const PORT = process.env.PORT || 7890;
-
-const server = app.listen(PORT, () => {
-  console.log(`🚀  Server started on ${API_URL}:${PORT}`);
-});
-
-const io = socket(server);
+// const io = socket(server, { cors: { origin: 'http://localhost:7891' } });
 
 //initializing socket io connection
 io.on('connection', (socket) => {
+  console.log('Connection');
   //new user joining
   socket.on('joinRoom', ({ user_id, roomname }) => {
     //create user
+    console.log('Join room');
     const chatUser = joinUser(socket.id, user_id, roomname);
     socket.join(chatUser.room);
 
