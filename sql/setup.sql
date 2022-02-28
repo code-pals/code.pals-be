@@ -58,6 +58,7 @@ CREATE TABLE boards (
     summary TEXT,
     goal TEXT,
     group_size INT,
+    avatar TEXT,
     created TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (created_by) REFERENCES users(user_id)
 );
