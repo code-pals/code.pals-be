@@ -18,7 +18,8 @@ const io = require('socket.io')(server, {
       'http://localhost:7890',
       'http://localhost:7891',
     ],
-    withCredentials: true,
+    credentials: true,
+    methods: ['GET', 'POST'],
   },
 });
 
