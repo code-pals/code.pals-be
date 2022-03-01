@@ -1,7 +1,7 @@
 {
   "name": "express-template",
   "version": "1.0.0",
-  "description": "",
+  "description": "npm i jsonwebtoken\r npm i cors\r npm i cookie-parser\r npm i cross-fetch",
   "main": "server.js",
   "type": "commonjs",
   "scripts": {
@@ -32,13 +32,26 @@
     "supertest": "^6.2.2"
   },
   "dependencies": {
+    "colors": "^1.4.0",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "cross-env": "^7.0.3",
     "cross-fetch": "^3.1.5",
     "dotenv": "^14.2.0",
-    "express": "^4.17.2",
+    "express": "^4.17.3",
     "jsonwebtoken": "^8.5.1",
-    "pg": "^8.7.1"
-  }
+    "pg": "^8.7.1",
+    "socket.io": "^4.4.1"
+  },
+  "directories": {
+    "lib": "lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/code-pals/code.pals-be.git"
+  },
+  "bugs": {
+    "url": "https://github.com/code-pals/code.pals-be/issues"
+  },
+  "homepage": "https://github.com/code-pals/code.pals-be#readme"
 }
