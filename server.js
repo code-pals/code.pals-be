@@ -46,7 +46,7 @@ io.on('connection', (socket) => {
     socket.emit('message', {
       userId: chatUser.id,
       username: chatUser.username,
-      text: '',
+      text: `Welcome ${chatUser.username}`,
     });
     //display join message for all minus the one joining
     socket.broadcast.to(chatUser.room).emit('message', {
@@ -62,7 +62,7 @@ io.on('connection', (socket) => {
       io.to(chatUser.room).emit('message', {
         userId: chatUser.id,
         username: chatUser.username,
-        text,
+        text: '',
       });
     });
     //when user exits
