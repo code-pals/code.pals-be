@@ -13,7 +13,7 @@ server.listen(PORT, () => {
 const io = require('socket.io')(server, {
   cors: {
     origin: [
-      'https://codepals.netlify.app/:*',
+      'https://codepals.netlify.app/',
       'https://codepalz.herokuapp.com:*',
       'http://localhost:7890:*',
       'http://localhost:7891:*',
