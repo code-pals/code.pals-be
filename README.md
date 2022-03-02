@@ -39,8 +39,8 @@ Database Schemas:
 <li>SQL</li>
 <li>Tables: Users, Comments, Boards </li>
 </ul>
-
-<kbd> Planning on Miro: https://miro.com/welcomeonboard/SDh1UkR6U1FscUhMbWh6Z3JCT2g3REkzVFBJM3puTEI0RURGOUpjS29NOURaVnNlaXZxZWZqWkxCNFBoY295cnwzMDc0NDU3MzU5MDExMDU5NTUw?invite_link_id=415303578681 <kbd>
+</br>
+Planning on Miro: </br> <em> https://miro.com/welcomeonboard/SDh1UkR6U1FscUhMbWh6Z3JCT2g3REkzVFBJM3puTEI0RURGOUpjS29NOURaVnNlaXZxZWZqWkxCNFBoY295cnwzMDc0NDU3MzU5MDExMDU5NTUw?invite_link_id=415303578681 <em>
 
 
 
