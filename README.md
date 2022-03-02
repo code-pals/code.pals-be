@@ -18,17 +18,18 @@ User Flow: </br>
   <li>Sign Up/Login</li> 
   <li>Redirect to Homepage</li> 
   <li>At the post details page, users can view comments on their posts and add comments to other posts. </li>
-  <li>At the board deatila page, users can join a boardroom with a live chat about the board </li>
+  <li>At the board details page, users can join a boardroom with a live chat about the board </li>
+  <li>Users can create a post or board. </li>
   <li>Users can also view their profile page, with their Github information, posts and boards </li>
  </ol>
 </br>
 To Run locally: </br>
 <ol>
-  <li>npm i jsonwebtoken </li>
-  <li>npm i cors </li>
-  <li>npm i cookie-parser </li>
-  <li>npm i cross-fetch </li>
-  <li>npm install socket.io </li>
+<li> npm i react-router-dom@5 </li>
+<li>npm i @chakra-ui/react @emotion/react@^11 @emotion/styled@^11 framer-motion@^6 </li>
+<li>npm i @chakra-ui/icons </li>
+<li>npm install react-icons --save </li>
+<li>npm i superagent </li>
   <li> Run npm start </li>
 </ol> 
  </br>
@@ -41,13 +42,3 @@ Database Schemas:
 </ul>
 </br>
 Planning on Miro: </br> <em> https://miro.com/welcomeonboard/SDh1UkR6U1FscUhMbWh6Z3JCT2g3REkzVFBJM3puTEI0RURGOUpjS29NOURaVnNlaXZxZWZqWkxCNFBoY295cnwzMDc0NDU3MzU5MDExMDU5NTUw?invite_link_id=415303578681 <em>
-
-
-
-
-
-
-
-
-
-
