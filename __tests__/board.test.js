@@ -4,6 +4,9 @@ const request = require('supertest');
 const app = require('../lib/app');
 const Board = require('../lib/models/Board');
 
+const agent = request.agent(app);
+jest.mock('../lib/utils/user');
+
 describe('backend routes', () => {
   beforeEach(() => {
     return setup(pool);
@@ -13,36 +16,44 @@ describe('backend routes', () => {
     pool.end();
   });
 
-  it.skip('should create a board', async () => {
-    const res = await request(app).post('/api/v1/boards').send({
-      created_by: '1',
+  it('should create a board', async () => {
+    await agent.get('/api/v1/users/login/callback?code=42');
+
+    const res = await agent.post('/api/v1/boards').send({
       title: 'Need ideas!',
       summary: 'Looking for talent',
       goal: 'Finish',
-      group_size: 4,
+      groupSize: 4,
     });
     expect(res.body).toEqual({
       board_id: expect.any(String),
-      created_by: '1',
+      created_by: '2',
       title: 'Need ideas!',
       summary: 'Looking for talent',
       goal: 'Finish',
-      group_size: 4,
+      group_size: '4',
       created: expect.any(String),
     });
   });
-  it.skip('should get all boards', async () => {
+  it('should get all boards', async () => {
     const board = await Board.insert({
       created_by: '1',
       title: 'Need ideas!',
       summary: 'Looking for talent',
       goal: 'Finish',
       group_size: 4,
+      
     });
     const res = await request(app).get('/api/v1/boards');
-    expect(res.body).toEqual([{ ...board, created: expect.any(String) }]);
+    expect(res.body).toEqual([{ 
+      ...board, 
+      created: expect.any(String),
+      github: 'fakename',
+      avatar: 'https://avatars.githubusercontent.com/u/79884362?v=4',
+      username: null, }],);
   });
-  it.skip('should get a board', async () => {
+  it('should get a board', async () => {
+    await agent.get('/api/v1/users/login/callback?code=42');
     const board = await Board.insert({
       created_by: '1',
       title: 'Need ideas!',
@@ -50,10 +61,20 @@ describe('backend routes', () => {
       goal: 'Finish',
       group_size: 4,
     });
-    const res = await request(app).get(`/api/v1/boards/${board.board_id}`);
-    expect(res.body).toEqual({ ...board, created: expect.any(String) });
+    const res = await agent.get(`/api/v1/boards/${board.board_id}`);
+    console.log('resbodygetid', res);
+    expect(res.body).toEqual({ 
+      title: 'Need ideas!',
+      summary: 'Looking for talent',
+      goal: 'Finish',
+      group_size: '4',
+      avatar: 'https://avatars.githubusercontent.com/u/79884362?v=4',
+      github: 'fakename'
+    
+    });
   });
-  it.skip('should update a board', async () => {
+  it('should update a board', async () => {
+    await agent.get('/api/v1/users/login/callback?code=42');
     const board = await Board.insert({
       created_by: '1',
       title: 'Need ideas!',
@@ -61,15 +82,17 @@ describe('backend routes', () => {
       goal: 'Finish',
       group_size: 4,
     });
-    const res = await request(app)
+    const res = await agent
       .patch(`/api/v1/boards/${board.board_id}`)
       .send({
-        created_by: '1',
+
         title: 'Closed board!',
         summary: 'Looking for talent',
         goal: 'Finish',
         group_size: 3,
       });
+
+    console.log('respatch', res);
     const updatedBoard = {
       board_id: expect.any(String),
       created_by: '1',
@@ -80,7 +103,7 @@ describe('backend routes', () => {
     };
     expect(res.body).toEqual({ ...updatedBoard, created: expect.any(String) });
   });
-  it.skip('should delete a board', async () => {
+  it('should delete a board', async () => {
     const board = await Board.insert({
       created_by: '1',
       title: 'Closed board!',
