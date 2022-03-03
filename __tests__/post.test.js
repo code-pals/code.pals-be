@@ -4,6 +4,8 @@ const request = require('supertest');
 const app = require('../lib/app');
 const Post = require('../lib/models/Post');
 
+jest.mock('../lib/utils/__mocks__/user');
+
 describe('backend routes', () => {
   beforeEach(() => {
     return setup(pool);
