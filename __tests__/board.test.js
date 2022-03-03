@@ -13,7 +13,7 @@ describe('backend routes', () => {
     pool.end();
   });
 
-  it('should create a board', async () => {
+  it.skip('should create a board', async () => {
     const res = await request(app).post('/api/v1/boards').send({
       created_by: '1',
       title: 'Need ideas!',
@@ -31,7 +31,7 @@ describe('backend routes', () => {
       created: expect.any(String),
     });
   });
-  it('should get all boards', async () => {
+  it.skip('should get all boards', async () => {
     const board = await Board.insert({
       created_by: '1',
       title: 'Need ideas!',
@@ -42,7 +42,7 @@ describe('backend routes', () => {
     const res = await request(app).get('/api/v1/boards');
     expect(res.body).toEqual([{ ...board, created: expect.any(String) }]);
   });
-  it('should get a board', async () => {
+  it.skip('should get a board', async () => {
     const board = await Board.insert({
       created_by: '1',
       title: 'Need ideas!',
@@ -53,7 +53,7 @@ describe('backend routes', () => {
     const res = await request(app).get(`/api/v1/boards/${board.board_id}`);
     expect(res.body).toEqual({ ...board, created: expect.any(String) });
   });
-  it('should update a board', async () => {
+  it.skip('should update a board', async () => {
     const board = await Board.insert({
       created_by: '1',
       title: 'Need ideas!',
@@ -80,7 +80,7 @@ describe('backend routes', () => {
     };
     expect(res.body).toEqual({ ...updatedBoard, created: expect.any(String) });
   });
-  it('should delete a board', async () => {
+  it.skip('should delete a board', async () => {
     const board = await Board.insert({
       created_by: '1',
       title: 'Closed board!',
