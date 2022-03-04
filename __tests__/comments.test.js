@@ -38,4 +38,28 @@ describe('backend routes', () => {
       created: expect.any(String),
     });
   });
+
+  it.skip('should get aggregate comment', async () => {
+
+    const commObj = {
+      commenter: 1,
+      postId: 1,
+      comment: 'reply to comment',
+      parent: 1,
+      favorited: false
+    };
+    const comment = await Comment.createComment(commObj);
+    console.log(comment);
+
+    const res = await agent.get('/api/v1/comments/parent/1');
+
+    console.log('aggtest', res.body);
+    expect(res.body).toEqual(expect.arrayContaining([{}, {}])
+      
+    );
+
+    
+
+
+  });
 });

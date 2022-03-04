@@ -54,7 +54,7 @@ describe('backend routes', () => {
       },
     ]);
   });
-  it.skip('should get a board', async () => {
+  it('should get a board', async () => {
     await agent.get('/api/v1/users/login/callback?code=42');
     const board = await Board.insert({
       created_by: '1',
@@ -72,6 +72,8 @@ describe('backend routes', () => {
       group_size: '4',
       avatar: 'https://avatars.githubusercontent.com/u/79884362?v=4',
       github: 'fakename',
+      bio: 'bio',
+      repos: '75',
     });
   });
   it('should update a board', async () => {
@@ -87,7 +89,7 @@ describe('backend routes', () => {
       title: 'Closed board!',
       summary: 'Looking for talent',
       goal: 'Finish',
-      group_size: 3,
+      groupSize: 3,
     });
 
     const updatedBoard = {
