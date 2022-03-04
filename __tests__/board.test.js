@@ -54,7 +54,7 @@ describe('backend routes', () => {
       },
     ]);
   });
-  it('should get a board', async () => {
+  it.skip('should get a board', async () => {
     await agent.get('/api/v1/users/login/callback?code=42');
     const board = await Board.insert({
       created_by: '1',
