@@ -1,5 +1,4 @@
--- Use this file to define your SQL tables
--- The SQL in this file will be executed when you run `npm run setup-db`
+
 DROP TABLE IF EXISTS users, posts, comments, boards CASCADE;
 
 CREATE TABLE users (
@@ -31,9 +30,6 @@ CREATE TABLE posts (
     (user_id)
 );
 
--- INSERT INTO posts (posted_by, title, code, question)
--- VALUES (1, 'Help me', 'array.prototype', 'What is a prototype of an Array?');
-
 CREATE TABLE comments (
     comment_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     commenter BIGINT NOT NULL,
@@ -49,8 +45,6 @@ CREATE TABLE comments (
 INSERT INTO comments (commenter, post_id, comment, parent, favorited)
 VALUES (1, 1, 'The JS array prototype constructor is used to allow new methods to the Array object', null, false);
 
-
-
 CREATE TABLE boards (
     board_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     created_by BIGINT NOT NULL,
@@ -62,7 +56,5 @@ CREATE TABLE boards (
     FOREIGN KEY (created_by) REFERENCES users(user_id)
 );
 
--- INSERT INTO boards (created_by, title, summary, goal, group_size)
--- VALUES (1, 'miro makeover', 'create a better miro board', 'full stack app', 4);
 
 
