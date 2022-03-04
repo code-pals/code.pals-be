@@ -5,6 +5,9 @@ const app = require('../lib/app');
 const Comment = require('../lib/models/Comment');
 const Post = require('../lib/models/Post');
 
+const agent = request.agent(app);
+jest.mock('../lib/utils/user');
+
 describe('backend routes', () => {
   beforeEach(() => {
     return setup(pool);
@@ -14,8 +17,10 @@ describe('backend routes', () => {
     pool.end();
   });
 
-  it.skip('should create a comment', async () => {
-    const res = await request(app).post('/api/v1/comments').send({
+  it('should create a comment', async () => {
+    await agent.get('/api/v1/users/login/callback?code=42');
+
+    const res = await agent.post('/api/v1/comments').send({
       commenter: 1,
       postId: 1,
       comment: 'great question',
@@ -33,6 +38,4 @@ describe('backend routes', () => {
       created: expect.any(String),
     });
   });
-
-  it.skip('should get comments by post', async () => {});
 });

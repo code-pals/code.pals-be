@@ -42,15 +42,17 @@ describe('backend routes', () => {
       summary: 'Looking for talent',
       goal: 'Finish',
       group_size: 4,
-      
     });
     const res = await request(app).get('/api/v1/boards');
-    expect(res.body).toEqual([{ 
-      ...board, 
-      created: expect.any(String),
-      github: 'fakename',
-      avatar: 'https://avatars.githubusercontent.com/u/79884362?v=4',
-      username: null, }],);
+    expect(res.body).toEqual([
+      {
+        ...board,
+        created: expect.any(String),
+        github: 'fakename',
+        avatar: 'https://avatars.githubusercontent.com/u/79884362?v=4',
+        username: null,
+      },
+    ]);
   });
   it('should get a board', async () => {
     await agent.get('/api/v1/users/login/callback?code=42');
@@ -62,15 +64,14 @@ describe('backend routes', () => {
       group_size: 4,
     });
     const res = await agent.get(`/api/v1/boards/${board.board_id}`);
-    console.log('resbodygetid', res);
-    expect(res.body).toEqual({ 
+
+    expect(res.body).toEqual({
       title: 'Need ideas!',
       summary: 'Looking for talent',
       goal: 'Finish',
       group_size: '4',
       avatar: 'https://avatars.githubusercontent.com/u/79884362?v=4',
-      github: 'fakename'
-    
+      github: 'fakename',
     });
   });
   it('should update a board', async () => {
@@ -82,26 +83,25 @@ describe('backend routes', () => {
       goal: 'Finish',
       group_size: 4,
     });
-    const res = await agent
-      .patch(`/api/v1/boards/${board.board_id}`)
-      .send({
+    const res = await agent.patch(`/api/v1/boards/${board.board_id}`).send({
+      title: 'Closed board!',
+      summary: 'Looking for talent',
+      goal: 'Finish',
+      group_size: 3,
+    });
 
-        title: 'Closed board!',
-        summary: 'Looking for talent',
-        goal: 'Finish',
-        group_size: 3,
-      });
-
-    console.log('respatch', res);
     const updatedBoard = {
       board_id: expect.any(String),
       created_by: '1',
       title: 'Closed board!',
       summary: 'Looking for talent',
       goal: 'Finish',
-      group_size: 3,
+      group_size: '3',
     };
-    expect(res.body).toEqual({ ...updatedBoard, created: expect.any(String) });
+    expect(res.body).toEqual({
+      ...updatedBoard,
+      created: expect.any(String),
+    });
   });
   it('should delete a board', async () => {
     const board = await Board.insert({
@@ -111,7 +111,7 @@ describe('backend routes', () => {
       goal: 'Finish',
       group_size: 3,
     });
-    const res = await request(app).delete(`/api/v1/boards/${board.board_id}`);
+    const res = await agent.delete(`/api/v1/boards/${board.board_id}`);
     expect(res.body).toEqual({ ...board, created: expect.any(String) });
   });
 });
