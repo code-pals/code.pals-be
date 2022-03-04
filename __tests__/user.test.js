@@ -5,7 +5,7 @@ const app = require('../lib/app');
 
 jest.mock('../lib/utils/user');
 
-describe('why-i-autha routes', () => {
+describe('user routes', () => {
   beforeEach(() => {
     return setup(pool);
   });
