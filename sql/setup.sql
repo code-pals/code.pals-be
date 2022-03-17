@@ -26,6 +26,7 @@ CREATE TABLE posts (
     code TEXT,
     question TEXT,
     created TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    favorite BIGINT, 
     FOREIGN KEY (posted_by) REFERENCES users
     (user_id)
 );
@@ -56,5 +57,5 @@ CREATE TABLE boards (
     FOREIGN KEY (created_by) REFERENCES users(user_id)
 );
 
-
+alter table posts add foreign key (favorite) references comments (comment_id);
 
