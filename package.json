@@ -8,6 +8,7 @@
     "test": "jest --verbose --runInBand --testLocationInResults --setupFiles dotenv/config",
     "test:watch": "npm run test -- --watch",
     "start": "node -r dotenv/config server.js",
+    "start:local": "node -r dotenv/config server.js dotenv_config_path=./.env.local",
     "start:watch": "nodemon -r dotenv/config server.js",
     "setup-db": "node -r dotenv/config setup-db.js",
     "setup-heroku": "heroku run npm run setup-db"
